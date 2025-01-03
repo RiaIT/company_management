@@ -19,6 +19,16 @@
             <a href="index2.html"><b>WakeUp ICT</b></a>
         </div>
 
+        <?php
+        session_start();
+        if (isset($_SESSION['flash_data'])) { ?>
+            <div class="alert alert-warning alert-dismissible fade show">
+                <?= $_SESSION['flash_data']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+            </div>
+            <?php unset($_SESSION['flash_data']); ?>
+        <?php } ?>
+
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">
@@ -30,7 +40,7 @@
                         <div class="col-md-6">
                             <label>First name</label><br>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="First name" name="name" required>
+                                <input type="text" class="form-control" placeholder="First name" name="fname" required>
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-user"></span>
@@ -41,7 +51,7 @@
                         <div class="col-6">
                             <label>Last name</label><br>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Last name" name="name" required>
+                                <input type="text" class="form-control" placeholder="Last name" name="lname" required>
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-user"></span>
@@ -123,7 +133,7 @@
                     </div>
                     <label>Comments</label><br>
                     <div class="input-group mb-3">
-                        <textarea type="text" class="form-control" placeholder="Comment Here..." name="cmnt" style="height: 100px;"></textarea>
+                        <textarea type="text" class="form-control" placeholder="Comment Here..." style="height: 100px;" name="cmnt"></textarea>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-comment"></span>

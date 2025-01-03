@@ -20,13 +20,24 @@
         <div class="login-logo">
             <a href="index2.html"><b>WakeUp ICT</b></a>
         </div>
+
+        <?php
+        session_start();
+        if (isset($_SESSION['flash_data'])) { ?>
+            <div class="alert alert-warning alert-dismissible fade show">
+                <?= $_SESSION['flash_data']; ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> </button>
+            </div>
+            <?php unset($_SESSION['flash_data']); ?>
+        <?php } ?>
+
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg"><b>LOGIN</b></p>
 
-                <form action="index3.html" method="post">
+                <form action="login_action.php" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -34,7 +45,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,8 +64,8 @@
             </div>
         </div>
 
-        <script src="plugins/jquery/jquery.min.js"></script>
-        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+        <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="dist/js/adminlte.min.js"></script>
 </body>
 
